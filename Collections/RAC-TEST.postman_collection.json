@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "48cc62c8-84fb-4eb1-bee7-796093915e73",
+		"name": "RAC-TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22082613"
+	},
+	"item": [
+		{
+			"name": "HomePage",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "if-modified-since",
+						"value": "Mon, 14 Apr 2025 14:50:03 GMT"
+					},
+					{
+						"key": "priority",
+						"value": "u=0, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://www.obilet.com/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "navigate"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "upgrade-insecure-requests",
+						"value": "1"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+					}
+				],
+				"url": "https://www.obilet.com/arac-kiralama",
+				"description": "Generated from cURL: curl 'https://www.obilet.com/arac-kiralama' \\\n  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \\\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\n  -b 'ob:Culture={\"name\":\"tr-TR\",\"url-prefix\":\"tr\",\"dotnet-culture-name\":\"tr-TR\",\"translation-name\":\"tr-TR\",\"reference-code\":\"TR\",\"use-dot-as-seperator\":false}; ob:multy-policy={\"lng\":\"tr\",\"functional\":true,\"marketing\":true,\"analytic\":true,\"saved\":false}; ob:USegment=9; ob:Device=LYh2ZKcsuO/3X9OCAWNbjhyU3vphp5vet21aBqDgi0k=; ob:Currency=TRY; ob:Fonts=1; _gcl_au=1.1.1687044143.1744643275; _fbp=fb.1.1744643275381.304045790263978537; _tt_enable_cookie=1; _ttp=01JRTDFES9CTXPKHDV3XTHCDQ2_.tt.1; G_ENABLED_IDPS=google; ob:Sid=24957452; ob:Md5Email=f2c4c16cf76572a9ab06d58037aae551; ob:IsUser=True; ob:EncryptSid=uid_R2dyRmxBZ0ttVFYzOEJnRWyaevYMuKEalgBLPFzDuYU=; _ym_uid=1744643284860225680; _ym_d=1744643284; adw-pushundefined=true; __zlcmid=1RAnXXcoLZsTNtY; _hjSessionUser_59376=eyJpZCI6IjhhOWY1MGVlLWNjMjctNWQ5Ni05ODkzLTBjNTQ1ZTJjNjljOSIsImNyZWF0ZWQiOjE3NDQ2NDMyODk5MjEsImV4aXN0aW5nIjp0cnVlfQ==; ttcsid_CFDP5DJC77UEUGLDUS5G=1744643284062.1.1744643474485; ob:OpeningEvent=true; ob:Session=d3YIUUQgm8uFW6UJy2eRmlbYK6p55zaC21PYGnkK4Uo=; _ga=GA1.1.1181426128.1744643275; _ga_ZM4H7HE3QN=GS1.1.1744885935.2.0.1744885935.60.0.0; cors=J1pt+1Mii0kqUv3gbp8QbCCA2jfx1RO8+OFzrZsYZ0BVLcZWw1APkY3bgZU0gmAR; _uetsid=3b6e09c01b7711f0af5573fc4629c2ad; _uetvid=3e60c270194211f09811897908004345; cto_bundle=9TEn2l8xZzFSZ0k2REZCYlBDUHQxJTJGcENQRUZCTlVXcEMwRWRVTjlVVFJleVo4d21XMmlQWjhXRDFpVkFmS0VuWGhFNWxNODhidnpNZmRDeXYxTUwlMkZpU0p2VVBON3NWN1BTJTJCc255Vkl2NmpCbGh1eGJiQXJDM0VOUk9sJTJGd081UWNkY3clMkJ3aGtkRGtoa1FrTWZDbnhHMjZMYW9pdyUyRmt0djRDSFhma09qNmdpbFlabTdYOFk1bzZIV3dpUFZVTjdmTXVSUThJSVRqQ3cwUHBPRkFYc0VHUmRBS0RNcWIxRmllZ0JzN1dEMlRSTDI0VDRPbmFlR2s5dnR1ZzZtOG5KZXNpZFNUZjAzWDgzVzVpNWo3Wk1ScVFWbWVrZHVSenFFaE9vRjJSd09GTGxjeklzSSUzRA; ttcsid=1744885936285.2.1744885936285; ttcsid_CFD4JN3C77U9H3ERU8TG=1744885936285.2.1744885936493' \\\n  -H 'if-modified-since: Mon, 14 Apr 2025 14:50:03 GMT' \\\n  -H 'priority: u=0, i' \\\n  -H 'referer: https://www.obilet.com/' \\\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: navigate' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'upgrade-insecure-requests: 1' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36'"
+			},
+			"response": []
+		},
+		{
+			"name": "Listing Page",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "priority",
+						"value": "u=0, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://www.obilet.com/arac-kiralama"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "navigate"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "upgrade-insecure-requests",
+						"value": "1"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+					}
+				],
+				"url": "https://www.obilet.com/araclar/25-25/20250514_1030-20250515_1030",
+				"description": "Generated from cURL: curl 'https://www.obilet.com/araclar/25-25/20250514_1030-20250515_1030' \\\n  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \\\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\n  -b 'ob:Culture={\"name\":\"tr-TR\",\"url-prefix\":\"tr\",\"dotnet-culture-name\":\"tr-TR\",\"translation-name\":\"tr-TR\",\"reference-code\":\"TR\",\"use-dot-as-seperator\":false}; ob:multy-policy={\"lng\":\"tr\",\"functional\":true,\"marketing\":true,\"analytic\":true,\"saved\":false}; ob:USegment=9; ob:Device=LYh2ZKcsuO/3X9OCAWNbjhyU3vphp5vet21aBqDgi0k=; ob:Currency=TRY; ob:Fonts=1; _gcl_au=1.1.1687044143.1744643275; _fbp=fb.1.1744643275381.304045790263978537; _tt_enable_cookie=1; _ttp=01JRTDFES9CTXPKHDV3XTHCDQ2_.tt.1; G_ENABLED_IDPS=google; ob:Sid=24957452; ob:Md5Email=f2c4c16cf76572a9ab06d58037aae551; ob:IsUser=True; ob:EncryptSid=uid_R2dyRmxBZ0ttVFYzOEJnRWyaevYMuKEalgBLPFzDuYU=; _ym_uid=1744643284860225680; _ym_d=1744643284; adw-pushundefined=true; __zlcmid=1RAnXXcoLZsTNtY; _hjSessionUser_59376=eyJpZCI6IjhhOWY1MGVlLWNjMjctNWQ5Ni05ODkzLTBjNTQ1ZTJjNjljOSIsImNyZWF0ZWQiOjE3NDQ2NDMyODk5MjEsImV4aXN0aW5nIjp0cnVlfQ==; ob:OpeningEvent=true; ob:Session=d3YIUUQgm8uFW6UJy2eRmlbYK6p55zaC21PYGnkK4Uo=; ttcsid_CFD4JN3C77U9H3ERU8TG=1744885936285.2.1744885936493; _uetsid=3b6e09c01b7711f0af5573fc4629c2ad; _uetvid=3e60c270194211f09811897908004345; ttcsid=1744885936285.2.1744885943685; cors=cRoI0OPL6g07O+XTpbtTP9osGxEWEL+kOOYD+g9q4rqBDZJt5Q4OyOGpHf4pI1pO; _ga_ZM4H7HE3QN=GS1.1.1744885935.2.1.1744885943.52.0.0; _ga=GA1.2.1181426128.1744643275; _gid=GA1.2.611640663.1744885944; _gat=1; cto_bundle=Wi35TV9ZSTJFNzV5SE16JTJCVjdZRzZzVzlmaGVrQlV6YU4wT0k2SDRVWXpJcHdFTDFsRXhEbUFuY0JYZnV3UnUwTlU0czJwOWJIYXd1MlZXVU8xUWlPcUVjdTA2ME5STVROblVCVDhrYWxQMjRSemZzVzNnT20yaEZ4WjI0SFAlMkZZRTZNelU2RmwzMzJwczZsdXJFSjFYU1A4YXNDSnZmR2JoMCUyRiUyQnZpU0V2eFFRSGs5VVIyd0ZXMGRvVG9xT1R0a09WWjdaSTRpd2pydFlLejBIdCUyQiUyQldNU0hCZFJRcnBZYmtRZVFHcDNHMnVWSEg4eGtVWk5aaVdIbnM1T21xSHdUREtyNzNYMDY0N2xGaUhBaDFTcmhRUlV4Uzkxd1lRY3dwVk43UnZDdUwlMkZBR1hXejlnJTNE; _ym_isad=2; ttcsid_CFDP5DJC77UEUGLDUS5G=1744885943685.2.1744885991663; _gali=search-button' \\\n  -H 'priority: u=0, i' \\\n  -H 'referer: https://www.obilet.com/arac-kiralama' \\\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: navigate' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'upgrade-insecure-requests: 1' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36'"
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+					},
+					{
+						"key": "accept-language",
+						"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "priority",
+						"value": "u=0, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://www.obilet.com/araclar/25-25/20250514_1030-20250515_1030"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "navigate"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "upgrade-insecure-requests",
+						"value": "1"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+					}
+				],
+				"url": "https://www.obilet.com/araclar/odeme/25-25/20250514_1030-20250515_1030/413/cc020625-3476-4be2-9927-dede67cb10b9",
+				"description": "Generated from cURL: curl 'https://www.obilet.com/araclar/odeme/25-25/20250514_1030-20250515_1030/413/cc020625-3476-4be2-9927-dede67cb10b9' \\\n  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \\\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\n  -b 'ob:Culture={\"name\":\"tr-TR\",\"url-prefix\":\"tr\",\"dotnet-culture-name\":\"tr-TR\",\"translation-name\":\"tr-TR\",\"reference-code\":\"TR\",\"use-dot-as-seperator\":false}; ob:multy-policy={\"lng\":\"tr\",\"functional\":true,\"marketing\":true,\"analytic\":true,\"saved\":false}; ob:USegment=9; ob:Device=LYh2ZKcsuO/3X9OCAWNbjhyU3vphp5vet21aBqDgi0k=; ob:Currency=TRY; ob:Fonts=1; _gcl_au=1.1.1687044143.1744643275; _fbp=fb.1.1744643275381.304045790263978537; _tt_enable_cookie=1; _ttp=01JRTDFES9CTXPKHDV3XTHCDQ2_.tt.1; G_ENABLED_IDPS=google; ob:Sid=24957452; ob:Md5Email=f2c4c16cf76572a9ab06d58037aae551; ob:IsUser=True; ob:EncryptSid=uid_R2dyRmxBZ0ttVFYzOEJnRWyaevYMuKEalgBLPFzDuYU=; _ym_uid=1744643284860225680; _ym_d=1744643284; adw-pushundefined=true; __zlcmid=1RAnXXcoLZsTNtY; _hjSessionUser_59376=eyJpZCI6IjhhOWY1MGVlLWNjMjctNWQ5Ni05ODkzLTBjNTQ1ZTJjNjljOSIsImNyZWF0ZWQiOjE3NDQ2NDMyODk5MjEsImV4aXN0aW5nIjp0cnVlfQ==; ob:OpeningEvent=true; ob:Session=d3YIUUQgm8uFW6UJy2eRmlbYK6p55zaC21PYGnkK4Uo=; ttcsid_CFD4JN3C77U9H3ERU8TG=1744885936285.2.1744885936493; _gid=GA1.2.611640663.1744885944; _ym_isad=2; _ga=GA1.2.1181426128.1744643275; _uetsid=3b6e09c01b7711f0af5573fc4629c2ad; _uetvid=3e60c270194211f09811897908004345; _hjSession_59376=eyJpZCI6IjlkNzViNzBiLWM4ZGMtNGQ1My1iNTM2LWNjNWJiYzNhYzcwNCIsImMiOjE3NDQ4ODU5OTI3NDUsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=; cto_bundle=UDsV0l8lMkZrRTNJY1Zrb1YxZnhOUmIlMkJBJTJCd0ZlZmZYUW1nTVNpdSUyRm5kaG5lTFFkWnFWQXdENFFVQVFlWlNMJTJCMUJBeUczRnNaSGtJUFFUdkdTMk5pVlhJOGZJT2NESHdyaXo3VEZRazlYZ1NzTW1URm4lMkI3MlUlMkZBV2g1aGF4Q1B2Z21PcFIlMkIlMkJHJTJCeHN2MFlyNWhUOFp3SktLVlptc2FHMWZ6OUpvOHdzZE84U3ZXbm0zVHhMaDlxNUxvREJiOG50SW1qRUlzYkZyakg0WnVVbkR2aGl3NktQOGRMb3BsNWNDdlVFVUN4Umh5YlUyQXo5ZDR0WUhNRVZEY0ZxY1dDa3FwTFVkZTQzSVNabjE0NmZwJTJGS25lRVpqT0FNcU1HbCUyQnZsUW53Sk80YmMwRFNQSXFSTSUzRA; ttcsid=1744885936285.2.1744885992781; ttcsid_CFDP5DJC77UEUGLDUS5G=1744885943685.2.1744885992991; cors=NwZV46CFnQebMIRo4j51QLKaL5VyvzyCE07iQHGBuGUqaI/Egvxcf2Lp2sv3Aqgs; _ga_ZM4H7HE3QN=GS1.1.1744885935.2.1.1744885999.60.0.0' \\\n  -H 'priority: u=0, i' \\\n  -H 'referer: https://www.obilet.com/araclar/25-25/20250514_1030-20250515_1030' \\\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: navigate' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'upgrade-insecure-requests: 1' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36'"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,69 @@
+# IDE specific files
+.idea/
+*.iml
+*.iws
+.vscode/
+*.swp
+*.swo
+
+# Build directories
+target/
+build/
+out/
+bin/
+dist/
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# Logs
+*.log
+logs/
+log/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Coverage directories
+coverage/
+htmlcov/
+
+# Test files
+*.test
+*.spec
+*.feature
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Documentation
+docs/_build/
+site/
+
+# Local development settings
+local_settings.py
+local_settings.json 
