@@ -1,6 +1,9 @@
 import json
 from datetime import datetime, timedelta
 from locust import HttpUser, task, between, events, User
+@events.init_command_line_parser.add_listener
+def add_test_type_option(parser):
+    parser.add_argument("--test-type", type=str, default="api", help="Test type: 'api' or 'client'")
 import requests
 import os
 import sys
@@ -12,7 +15,7 @@ from configparser import ConfigParser
 # Config dosyasını oku
 config = ConfigParser()
 config.read('locust.conf')
-TEST_TYPE = config.get('locust', 'test-type', fallback='api')
+TEST_TYPE = config.get('settings', 'test-type', fallback='api')
 
 # Locust Configurations
 MAX_RESPONSE_TIME = 90
@@ -144,7 +147,7 @@ class DynamicTaskSet:
         """ Adds a task for each request """
         try:
             method = request_item['request']['method'].lower()
-            
+
             # URL'yi farklı formatlardan alabilmek için esnek bir yaklaşım
             url = None
             if 'url' in request_item['request']:
@@ -161,16 +164,16 @@ class DynamicTaskSet:
                         if 'query' in url_data:
                             query_params = '&'.join([f"{q['key']}={q['value']}" for q in url_data['query']])
                             url = f"{url}?{query_params}"
-            
+
             if not url:
                 raise ValueError("URL could not be extracted from request")
-            
-            headers = {header['key']: replace_placeholders(header['value']) 
-                      for header in request_item['request'].get('header', [])}
-            
+
+            headers = {header['key']: replace_placeholders(header['value'])
+                       for header in request_item['request'].get('header', [])}
+
             if self.token_manager:
                 headers["Authorization"] = f"Bearer {self.token_manager.get_token(self.parent.environment)}"
-            
+
             url = replace_path_variables(url, headers, self.url_variables)
 
             @task
@@ -194,7 +197,7 @@ class DynamicTaskSet:
                         self.check_response_time(response)
 
             self.tasks.append((f"{parent_key} - {request_item['name']}", task_func))
-        
+
         except KeyError as e:
             error_message = f"KeyError: '{e.args[0]}' not found in the request item or URL."
             if error_message not in self.seen_errors:
@@ -280,7 +283,7 @@ class APITestUser(HttpUser):
             # Remove old log file if exists
             if os.path.exists(LOG_FILE):
                 os.remove(LOG_FILE)
-            
+
             # Reconfigure logging
             logging.getLogger().handlers = []  # Clear existing handlers
             logging.basicConfig(
@@ -315,3 +318,6 @@ else:
 # Locust'a hangi User sınıfını kullanacağını söyle
 class TestUser(UserClass):
     pass
+
+# Expose only TestUser to Locust to avoid duplicate user class names
+del WebUser, APITestUser

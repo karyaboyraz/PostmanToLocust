@@ -67,3 +67,4 @@ site/
 # Local development settings
 local_settings.py
 local_settings.json 
+/Locust_Report
