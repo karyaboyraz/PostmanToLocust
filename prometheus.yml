@@ -1,0 +1,17 @@
+# Prometheus configuration file for Locust metrics
+
+global:
+  scrape_interval: 5s      # Scrape metrics every 5 seconds
+  evaluation_interval: 5s  # Evaluate rules every 5 seconds
+  external_labels:
+    monitor: 'locust-monitor'
+
+# Scrape configurations
+scrape_configs:
+  # Locust metrics
+  - job_name: 'locust'
+    static_configs:
+      - targets: ['localhost:8089']
+    metrics_path: '/metrics'
+    scrape_interval: 5s
+

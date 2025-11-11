@@ -1,0 +1,847 @@
+{
+  "dashboard": {
+    "title": "Locust Performance Dashboard - Multi-Endpoint Optimized",
+    "tags": ["locust", "performance", "load-testing"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 2,
+    "refresh": "5s",
+    "time": {
+      "from": "now-15m",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "Overall Metrics",
+        "type": "row",
+        "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
+        "collapsed": false
+      },
+      {
+        "id": 2,
+        "title": "Requests per Second",
+        "type": "timeseries",
+        "gridPos": {"h": 6, "w": 6, "x": 0, "y": 1},
+        "targets": [
+          {
+            "expr": "locust_requests_per_second",
+            "legendFormat": "Total RPS",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "pointSize": 5
+            },
+            "unit": "reqps",
+            "min": 0
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "single"},
+          "legend": {"displayMode": "list", "placement": "bottom"}
+        }
+      },
+      {
+        "id": 3,
+        "title": "Total Requests",
+        "type": "timeseries",
+        "gridPos": {"h": 6, "w": 6, "x": 6, "y": 1},
+        "targets": [
+          {
+            "expr": "locust_requests_total{name=\"Total\"}",
+            "legendFormat": "Total Requests",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10
+            },
+            "unit": "short",
+            "min": 0
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "single"},
+          "legend": {"displayMode": "list", "placement": "bottom"}
+        }
+      },
+      {
+        "id": 4,
+        "title": "Response Time (Overall)",
+        "type": "timeseries",
+        "gridPos": {"h": 6, "w": 6, "x": 12, "y": 1},
+        "targets": [
+          {
+            "expr": "locust_response_time_p95_seconds{name=\"Total\"}",
+            "legendFormat": "p95",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          },
+          {
+            "expr": "locust_response_time_median_seconds{name=\"Total\"}",
+            "legendFormat": "median",
+            "refId": "B",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          },
+          {
+            "expr": "locust_response_time_p99_seconds{name=\"Total\"}",
+            "legendFormat": "p99",
+            "refId": "C",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10
+            },
+            "unit": "s",
+            "min": 0
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "multi"},
+          "legend": {"displayMode": "list", "placement": "bottom"}
+        }
+      },
+      {
+        "id": 5,
+        "title": "Current Users",
+        "type": "stat",
+        "gridPos": {"h": 3, "w": 3, "x": 18, "y": 1},
+        "targets": [
+          {
+            "expr": "locust_users_current",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [{"value": null, "color": "green"}]
+            },
+            "unit": "short"
+          }
+        },
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "reduceOptions": {"calcs": ["lastNotNull"]}
+        }
+      },
+      {
+        "id": 6,
+        "title": "Failure Rate",
+        "type": "stat",
+        "gridPos": {"h": 3, "w": 3, "x": 21, "y": 1},
+        "targets": [
+          {
+            "expr": "rate(locust_requests_failures_total{name=\"Total\"}[1m]) / rate(locust_requests_total{name=\"Total\"}[1m]) * 100",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": null, "color": "green"},
+                {"value": 1, "color": "yellow"},
+                {"value": 5, "color": "red"}
+              ]
+            },
+            "unit": "percent"
+          }
+        },
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "reduceOptions": {"calcs": ["lastNotNull"]}
+        }
+      },
+      {
+        "id": 7,
+        "title": "Total Failures",
+        "type": "stat",
+        "gridPos": {"h": 3, "w": 3, "x": 18, "y": 4},
+        "targets": [
+          {
+            "expr": "locust_requests_failures_total{name=\"Total\"}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": null, "color": "green"},
+                {"value": 1, "color": "red"}
+              ]
+            },
+            "unit": "short"
+          }
+        },
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "reduceOptions": {"calcs": ["lastNotNull"]}
+        }
+      },
+      {
+        "id": 8,
+        "title": "Success Rate",
+        "type": "stat",
+        "gridPos": {"h": 3, "w": 3, "x": 21, "y": 4},
+        "targets": [
+          {
+            "expr": "(1 - rate(locust_requests_failures_total{name=\"Total\"}[1m]) / rate(locust_requests_total{name=\"Total\"}[1m])) * 100",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 95, "color": "red"},
+                {"value": 99, "color": "yellow"},
+                {"value": null, "color": "green"}
+              ]
+            },
+            "unit": "percent",
+            "max": 100,
+            "min": 0
+          }
+        },
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "reduceOptions": {"calcs": ["lastNotNull"]}
+        }
+      },
+      {
+        "id": 9,
+        "title": "Endpoint Analysis",
+        "type": "row",
+        "gridPos": {"h": 1, "w": 24, "x": 0, "y": 7},
+        "collapsed": false
+      },
+      {
+        "id": 10,
+        "title": "Endpoint Performance Table",
+        "type": "table",
+        "gridPos": {"h": 10, "w": 24, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "locust_requests_total{name!=\"Total\"}",
+            "format": "table",
+            "instant": true,
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          },
+          {
+            "expr": "locust_requests_failures_total{name!=\"Total\"}",
+            "format": "table",
+            "instant": true,
+            "refId": "B",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          },
+          {
+            "expr": "locust_response_time_p95_seconds{name!=\"Total\"}",
+            "format": "table",
+            "instant": true,
+            "refId": "C",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          },
+          {
+            "expr": "locust_response_time_median_seconds{name!=\"Total\"}",
+            "format": "table",
+            "instant": true,
+            "refId": "D",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          },
+          {
+            "expr": "rate(locust_requests_total{name!=\"Total\"}[1m])",
+            "format": "table",
+            "instant": true,
+            "refId": "E",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          },
+          {
+            "expr": "rate(locust_requests_failures_total{name!=\"Total\"}[1m]) / rate(locust_requests_total{name!=\"Total\"}[1m]) * 100",
+            "format": "table",
+            "instant": true,
+            "refId": "F",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "__name__": true,
+                "instance": true,
+                "job": true
+              },
+              "indexByName": {
+                "method": 0,
+                "name": 1,
+                "Value #A": 2,
+                "Value #B": 3,
+                "Value #C": 4,
+                "Value #D": 5,
+                "Value #E": 6,
+                "Value #F": 7
+              },
+              "renameByName": {
+                "method": "Method",
+                "name": "Endpoint",
+                "Value #A": "Total Requests",
+                "Value #B": "Failures",
+                "Value #C": "p95 (s)",
+                "Value #D": "Median (s)",
+                "Value #E": "RPS",
+                "Value #F": "Failure Rate %"
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": {},
+              "sort": [{"field": "Total Requests", "desc": true}]
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "cellOptions": {"type": "auto"}
+            },
+            "mappings": []
+          },
+          "overrides": [
+            {
+              "matcher": {"id": "byName", "options": "Failures"},
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {"value": null, "color": "green"},
+                      {"value": 1, "color": "red"}
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.cellOptions",
+                  "value": {"type": "color-background"}
+                }
+              ]
+            },
+            {
+              "matcher": {"id": "byName", "options": "p95 (s)"},
+              "properties": [
+                {"id": "unit", "value": "s"},
+                {"id": "decimals", "value": 3},
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {"value": null, "color": "green"},
+                      {"value": 1, "color": "yellow"},
+                      {"value": 5, "color": "red"}
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.cellOptions",
+                  "value": {"type": "color-background"}
+                }
+              ]
+            },
+            {
+              "matcher": {"id": "byName", "options": "Median (s)"},
+              "properties": [
+                {"id": "unit", "value": "s"},
+                {"id": "decimals", "value": 3}
+              ]
+            },
+            {
+              "matcher": {"id": "byName", "options": "RPS"},
+              "properties": [
+                {"id": "unit", "value": "reqps"},
+                {"id": "decimals", "value": 2}
+              ]
+            },
+            {
+              "matcher": {"id": "byName", "options": "Failure Rate %"},
+              "properties": [
+                {"id": "unit", "value": "percent"},
+                {"id": "decimals", "value": 2},
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {"value": null, "color": "green"},
+                      {"value": 1, "color": "yellow"},
+                      {"value": 5, "color": "red"}
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.cellOptions",
+                  "value": {"type": "color-background"}
+                }
+              ]
+            },
+            {
+              "matcher": {"id": "byName", "options": "Total Requests"},
+              "properties": [{"id": "unit", "value": "short"}]
+            }
+          ]
+        },
+        "options": {
+          "cellHeight": "sm",
+          "footer": {"show": false},
+          "showHeader": true,
+          "sortBy": [{"desc": true, "displayName": "Total Requests"}]
+        }
+      },
+      {
+        "id": 11,
+        "title": "Top Endpoints by Request Volume",
+        "type": "row",
+        "gridPos": {"h": 1, "w": 24, "x": 0, "y": 18},
+        "collapsed": false
+      },
+      {
+        "id": 12,
+        "title": "Top 15 Endpoints by Requests",
+        "type": "bargauge",
+        "gridPos": {"h": 6, "w": 12, "x": 0, "y": 19},
+        "targets": [
+          {
+            "expr": "topk(15, locust_requests_total{name!=\"Total\"})",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "unit": "short"
+          }
+        },
+        "options": {
+          "displayMode": "gradient",
+          "orientation": "horizontal",
+          "reduceOptions": {"calcs": ["lastNotNull"]},
+          "showUnfilled": true
+        }
+      },
+      {
+        "id": 13,
+        "title": "Top 15 Endpoints by RPS",
+        "type": "bargauge",
+        "gridPos": {"h": 6, "w": 12, "x": 12, "y": 19},
+        "targets": [
+          {
+            "expr": "topk(15, rate(locust_requests_total{name!=\"Total\"}[1m]))",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "unit": "reqps"
+          }
+        },
+        "options": {
+          "displayMode": "gradient",
+          "orientation": "horizontal",
+          "reduceOptions": {"calcs": ["lastNotNull"]},
+          "showUnfilled": true
+        }
+      },
+      {
+        "id": 14,
+        "title": "Response Time Analysis",
+        "type": "row",
+        "gridPos": {"h": 1, "w": 24, "x": 0, "y": 25},
+        "collapsed": false
+      },
+      {
+        "id": 15,
+        "title": "Top 20 Endpoints by Response Time (p95)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 26},
+        "targets": [
+          {
+            "expr": "topk(20, locust_response_time_p95_seconds{name!=\"Total\"})",
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10
+            },
+            "unit": "s",
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": null, "color": "green"},
+                {"value": 1, "color": "yellow"},
+                {"value": 5, "color": "red"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "multi", "sort": "desc"},
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "width": 350,
+            "calcs": ["last", "max", "mean"]
+          }
+        }
+      },
+      {
+        "id": 16,
+        "title": "Response Time Heatmap (Top 25)",
+        "type": "heatmap",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 26},
+        "targets": [
+          {
+            "expr": "topk(25, locust_response_time_p95_seconds{name!=\"Total\"})",
+            "format": "heatmap",
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s"
+          }
+        },
+        "options": {
+          "calculate": false,
+          "cellGap": 2,
+          "color": {
+            "exponent": 0.5,
+            "fill": "dark-orange",
+            "mode": "spectrum",
+            "scale": "exponential",
+            "scheme": "Spectral",
+            "steps": 64
+          },
+          "legend": {"show": true},
+          "tooltip": {"show": true}
+        }
+      },
+      {
+        "id": 17,
+        "title": "Failure Analysis",
+        "type": "row",
+        "gridPos": {"h": 1, "w": 24, "x": 0, "y": 34},
+        "collapsed": false
+      },
+      {
+        "id": 18,
+        "title": "Top 15 Endpoints by Failure Rate",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 35},
+        "targets": [
+          {
+            "expr": "topk(15, rate(locust_requests_failures_total{name!=\"Total\"}[1m]) / rate(locust_requests_total{name!=\"Total\"}[1m]) * 100)",
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10
+            },
+            "unit": "percent",
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": null, "color": "green"},
+                {"value": 1, "color": "yellow"},
+                {"value": 5, "color": "red"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "multi", "sort": "desc"},
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "width": 350,
+            "calcs": ["last", "max", "mean"]
+          }
+        }
+      },
+      {
+        "id": 19,
+        "title": "Failed Requests by Endpoint",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 35},
+        "targets": [
+          {
+            "expr": "topk(15, locust_requests_failures_total{name!=\"Total\"})",
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10
+            },
+            "unit": "short",
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": null, "color": "green"},
+                {"value": 1, "color": "red"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "multi", "sort": "desc"},
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "width": 350,
+            "calcs": ["last", "max", "mean"]
+          }
+        }
+      },
+      {
+        "id": 20,
+        "title": "Endpoint Requests Over Time",
+        "type": "row",
+        "gridPos": {"h": 1, "w": 24, "x": 0, "y": 43},
+        "collapsed": false
+      },
+      {
+        "id": 21,
+        "title": "Failed Requests Over Time (Top 20)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 44},
+        "targets": [
+          {
+            "expr": "topk(20, locust_requests_failures_total{name!=\"Total\",name!=\"\"})",
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10
+            },
+            "unit": "short",
+            "min": 0
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "multi", "sort": "desc"},
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "width": 400,
+            "calcs": ["last", "max", "mean"],
+            "showLegend": true
+          }
+        }
+      },
+      {
+        "id": 22,
+        "title": "Request Rate by Endpoint (Top 20)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 44},
+        "targets": [
+          {
+            "expr": "topk(20, rate(locust_requests_total{name!=\"Total\",name!=\"\"}[1m]))",
+            "legendFormat": "{{method}} {{name}}",
+            "refId": "A",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ef3sy90eh69s0c"
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10
+            },
+            "unit": "reqps",
+            "min": 0
+          }
+        },
+        "options": {
+          "tooltip": {"mode": "multi", "sort": "desc"},
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "width": 400,
+            "calcs": ["last", "max", "mean"],
+            "showLegend": true
+          }
+        }
+      }
+    ]
+  },
+  "overwrite": true,
+  "folderUid": null
+}

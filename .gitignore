@@ -66,5 +66,23 @@ site/
 
 # Local development settings
 local_settings.py
-local_settings.json 
-/Locust_Report
+local_settings.json
+
+# Locust specific
+locust.log
+
+# Prometheus data
+prometheus_data/*
+!prometheus_data/.gitkeep
+
+# Sensitive data
+token.json
+*.token
+
+# Grafana temporary files
+grafana_dashboard_*.json
+!grafana_dashboard.json
+
+# Locust reports (keep directory structure)
+Locust_Report/*
+!Locust_Report/.gitkeep
